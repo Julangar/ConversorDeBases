@@ -1,6 +1,8 @@
+"""
+#Forma funcional
 def convertir_a_base_decimal(numero, base):  # Funcion recibe _numero en cadena y base original en int
     numeroconvertido = 0   # Variable para guardar el numero convertido
-    numero = str(numero)  # Convertir numero en entero
+    numero = str(numero)  # Convertir numero en cadena
     base = int(base)      # Convertir base en entero
     numero = numero[::-1] # Damos vuelta al numero para multiplicar por su potencia
     for i in range(0, len(numero), 1):  # Contamos potencia "i" desde 0 hasta maxima posicion numero
@@ -26,5 +28,33 @@ def convertir_entre_bases(n,base,base2):
 base1 = int(input("Ingrese la base de el número que desea convertir: "))
 numero = input("Ingrese el número teniendo en cuenta la base en la que se encentra: ")
 base2 = int(input("Ingrese la base a la cual desea convertir el numero: "))
-print(convertir_entre_bases(numero,base1,base2))
+print(convertir_entre_bases(numero,base1,base2))""" 
 
+##############################################################################################
+
+#Forma imperativa procedimental
+
+base1 = int(input("Ingrese la base de el número que desea convertir: "))
+numero = input("Ingrese el número teniendo en cuenta la base en la que se encentra: ")
+base2 = int(input("Ingrese la base a la cual desea convertir el numero: "))
+cadenaConversion = "0123456789ABCDEFGHIJKLMNOPQRSTUV"
+numero_base10 = 0
+numero = numero[::-1]
+for i in range(0, len(numero), 1):
+    if ord(numero[i]) >= 65:
+        numero_base10 += int(ord(numero[i]) - 55) * (base1** i) 
+    else:
+        numero_base10 += int(ord(numero[i]) - 48) * (base1** i)
+
+if (base2==10):
+    print(numero_base10)
+elif numero_base10 < base2:
+    print(cadenaConversion[numero_base10])
+elif(numero_base10 < 100):
+    print(cadenaConversion[numero_base10//base2] + cadenaConversion[numero_base10%base2])
+elif(numero_base10 < 1000):
+    print(cadenaConversion[numero_base10//base2] + cadenaConversion[(numero_base10//base2)//base2] + cadenaConversion[numero_base10%base2])
+elif(numero_base10 < 10000):
+    print(cadenaConversion[numero_base10//base2] + cadenaConversion[(numero_base10//base2)//base2] + cadenaConversion[((numero_base10//base2)//base2)//base2] + cadenaConversion[numero_base10%base2])
+elif(numero_base10 < 100000):
+    print(cadenaConversion[numero_base10//base2] + cadenaConversion[(numero_base10//base2)//base2] + cadenaConversion[((numero_base10//base2)//base2)//base2] + cadenaConversion[(((numero_base10//base2)//base2)//base2)//base2] + cadenaConversion[numero_base10%base2])    
