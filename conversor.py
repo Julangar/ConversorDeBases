@@ -1,4 +1,4 @@
-"""
+
 #Forma funcional
 def convertir_a_base_decimal(numero, base):  # Funcion recibe _numero en cadena y base original en int
     numeroconvertido = 0   # Variable para guardar el numero convertido
@@ -15,7 +15,7 @@ def convertir_a_base_decimal(numero, base):  # Funcion recibe _numero en cadena 
                                                                            # la variable numeroconvertido
     return numeroconvertido  # Retornamos el numero convertido en formato int
 
-def convertir_entre_bases(n,base,base2):
+def convertir_entre_bases(n, base, base2):
     cadenaConversion = "0123456789ABCDEFGHIJKLMNOPQRSTUV"
     n = convertir_a_base_decimal(n,base) #Se convierte el numero dado a decimal
     if base2 == 10: #Si la base a la que se desea convertir es 10 se deja el valor en base decimal
@@ -23,38 +23,13 @@ def convertir_entre_bases(n,base,base2):
     elif n < base2: # Si el numero es menor que la base se pasa su respectiva representacion el la base a convertir
       return cadenaConversion[n]
     else: # Se utiliza la division entera para hallar el residuo y se utiliza el modulo para el ultimo digito
-      return convertir_entre_bases(n//base2,base2) + cadenaConversion[n%base2]
+      return convertir_entre_bases((n//base2), 10, base2) + cadenaConversion[n%base2]
 
-base1 = int(input("Ingrese la base de el número que desea convertir: "))
-numero = input("Ingrese el número teniendo en cuenta la base en la que se encentra: ")
-base2 = int(input("Ingrese la base a la cual desea convertir el numero: "))
-print(convertir_entre_bases(numero,base1,base2))""" 
-
-##############################################################################################
-
-#Forma imperativa procedimental
-
-base1 = int(input("Ingrese la base de el número que desea convertir: "))
-numero = input("Ingrese el número teniendo en cuenta la base en la que se encentra: ")
-base2 = int(input("Ingrese la base a la cual desea convertir el numero: "))
-cadenaConversion = "0123456789ABCDEFGHIJKLMNOPQRSTUV"
-numero_base10 = 0
-numero = numero[::-1]
-for i in range(0, len(numero), 1):
-    if ord(numero[i]) >= 65:
-        numero_base10 += int(ord(numero[i]) - 55) * (base1** i) 
-    else:
-        numero_base10 += int(ord(numero[i]) - 48) * (base1** i)
-
-if (base2==10):
-    print(numero_base10)
-elif numero_base10 < base2:
-    print(cadenaConversion[numero_base10])
-elif(numero_base10 < 100):
-    print(cadenaConversion[numero_base10//base2] + cadenaConversion[numero_base10%base2])
-elif(numero_base10 < 1000):
-    print(cadenaConversion[numero_base10//base2] + cadenaConversion[(numero_base10//base2)//base2] + cadenaConversion[numero_base10%base2])
-elif(numero_base10 < 10000):
-    print(cadenaConversion[numero_base10//base2] + cadenaConversion[(numero_base10//base2)//base2] + cadenaConversion[((numero_base10//base2)//base2)//base2] + cadenaConversion[numero_base10%base2])
-elif(numero_base10 < 100000):
-    print(cadenaConversion[numero_base10//base2] + cadenaConversion[(numero_base10//base2)//base2] + cadenaConversion[((numero_base10//base2)//base2)//base2] + cadenaConversion[(((numero_base10//base2)//base2)//base2)//base2] + cadenaConversion[numero_base10%base2])    
+while True:      
+    base1 = input("Ingrese la base de el número que desea convertir: ")
+    numero = input("Ingrese el número teniendo en cuenta la base en la que se encentra: ")
+    base2 = int(input("Ingrese la base a la cual desea convertir el numero: "))
+    print(convertir_entre_bases(numero,base1,base2))
+    repetir = int(input("Si desea realizar otra conversion ingrese 0, sino ingrese 1: "))
+    if(repetir == 1):
+        break
