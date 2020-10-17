@@ -1,4 +1,4 @@
-#Forma imperativa procedimental
+#Forma imperativa
 
 base1 = int(input("Ingrese la base de el número que desea convertir: "))
 numero = input("Ingrese el número teniendo en cuenta la base en la que se encentra: ")
