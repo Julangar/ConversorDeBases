@@ -38,7 +38,7 @@ while True:
         print("Ingrese un valor para la base valido (2-36) ")
         continue
     try:
-        numero = input("Ingrese el número teniendo en cuenta la base en la que se encentra: ")
+        numero = input("Ingrese el número teniendo en cuenta la base en la que se encuentra: ")
         if (numero.startswith("-")):
             quit()
         else:
